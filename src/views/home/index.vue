@@ -165,10 +165,19 @@
         </el-col>
       </el-row>
     </div>
+    <div class="statistics-layout cool-border">
+      <div class="layout-title">销量统计</div>
+      <div class="chart-layout">
+        <div id="pie-chart"></div>
+        <div id="bar-chart"></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import * as echarts from 'echarts'
+import {options} from './options'
 import {str2Date} from '@/utils/date';
 import img_home_order from '@/assets/images/home_order.png';
 import img_home_today_amount from '@/assets/images/home_today_amount.png';
@@ -209,6 +218,8 @@ export default {
         rows: []
       },
       greeting: '',
+      pieOption: null,
+      barOption: null,
       img_home_order,
       img_home_today_amount,
       img_home_yesterday_amount
@@ -259,11 +270,126 @@ export default {
         }
       }, 1000)
     }
+  },
+  mounted() {
+    let pieDom = document.getElementById('pie-chart')
+    let pieChart = echarts.init(pieDom)
+
+    let barDom = document.getElementById('bar-chart')
+    let barChart = echarts.init(barDom)
+
+    this.pieOption = {
+      title: {
+        text: '总销量',
+        left: 'center',
+        textStyle: {
+          fontSize: 14,
+          color: '#909399'
+        }
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      legend: {
+        left: 'center',
+        top: 'bottom',
+        data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+      },
+      series: [
+        {
+          name: '销量占比',
+          type: 'pie',
+          roseType: 'area',
+          itemStyle: {
+            borderRadius: 5
+          },
+          data: [
+            {value: 30, name: '平板电脑'},
+            {value: 28, name: '手机'},
+            {value: 26, name: '耳机'},
+            {value: 24, name: '笔记本电脑'},
+            {value: 22, name: '键盘'},
+            {value: 20, name: '鼠标'},
+            {value: 18, name: '显示屏'}
+          ]
+        },
+      ]
+    };
+
+    this.barOption = {
+      title: {
+        text: options[0].text,
+        left: 'center',
+        textStyle: {
+          fontSize: 14,
+          color: '#909399'
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      color: '#c23531',
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        data: options[0].yData
+      },
+      series: [
+        {
+          name: '销量',
+          type: 'bar',
+          data: options[0].xData
+        }
+      ]
+    };
+
+    pieChart.setOption(this.pieOption);
+
+    barChart.setOption(this.barOption)
+
+    pieChart.on('click', (params) => {
+      console.log(params)
+      let index = params.dataIndex
+      this.barOption.title.text = options[index].text
+      this.barOption.yAxis.data = options[index].yData
+      this.barOption.series[0].data = options[index].xData
+      this.barOption.color = params.color
+      barChart.setOption(this.barOption)
+    })
+
   }
 }
 </script>
 
 <style scoped>
+
+#pie-chart {
+  width: 40%;
+  height: 400px;
+}
+
+#bar-chart {
+  width: 60%;
+}
+
+.chart-layout {
+  display: flex;
+  justify-content: space-around;
+}
+
 .app-container {
   margin-top: 40px;
   margin-left: 120px;
