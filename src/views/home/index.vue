@@ -4,7 +4,7 @@
       <el-row :gutter="20">
         <el-col :span="18">
           <div class="out-border cool-border">
-            <div class="layout-title">MyPetStore后台管理系统</div>
+            <div class="layout-title">Electron后台管理系统</div>
             <div class="address-content">
               {{ greeting }}, <span class="color-main">OutSider</span>！虽然我已经问过好了，但是为了让这边显得不那么空旷，我决定再水点儿。
             </div>
@@ -305,13 +305,11 @@ export default {
             borderRadius: 5
           },
           data: [
-            {value: 30, name: '平板电脑'},
-            {value: 28, name: '手机'},
-            {value: 26, name: '耳机'},
-            {value: 24, name: '笔记本电脑'},
-            {value: 22, name: '键盘'},
-            {value: 20, name: '鼠标'},
-            {value: 18, name: '显示屏'}
+            {value: 120149, name: '平板电脑'},
+            {value: 206386, name: '手机'},
+            {value: 123121, name: '耳机'},
+            {value: 156015, name: '笔记本电脑'},
+            {value: 99199, name: '手表'}
           ]
         },
       ]

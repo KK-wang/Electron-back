@@ -27,13 +27,13 @@ export default {
   methods: {
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => item.name)
-      matched = [{ path: '/main', meta: { title: 'MyPetStore后台管理系统' }}].concat(matched)
+      matched = [{ path: '/main', meta: { title: 'Electron后台管理系统' }}].concat(matched)
       this.levelList = matched
     },
     routerClick(title) {
-      if(title === 'MyPetStore后台管理系统') {
+      if(title === 'Electron后台管理系统') {
         this.$store.dispatch("actionUpdateActiveIndex", "1");
-      } else if(title === '宠物') {
+      } else if(title === '商品') {
         this.$store.dispatch("actionUpdateActiveIndex", "2-1");
       } else if(title === '订单') {
         this.$store.dispatch("actionUpdateActiveIndex", "3-1");
