@@ -10,7 +10,7 @@
         <div style="text-align: center">
           <svg-icon icon-class="login-mall" style="width: 56px;height: 56px;color: #409EFF"></svg-icon>
         </div>
-        <h2 class="login-title color-main">MyPetStore-Plus</h2>
+        <h2 class="login-title color-main">Electron-Plus</h2>
         <el-form-item prop="username" v-show="passwordLogin" class="input-fadein">
           <el-input name="username"
                     type="text"

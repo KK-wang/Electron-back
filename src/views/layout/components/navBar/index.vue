@@ -13,19 +13,19 @@
     </el-menu-item>
     <el-submenu index="2">
       <template #title>
-        <svg-icon icon-class="product"></svg-icon>&nbsp;&nbsp;宠物
+        <svg-icon icon-class="product"></svg-icon>&nbsp;&nbsp;商品
       </template>
       <el-menu-item index="2-1">
-        <svg-icon icon-class="product-list"></svg-icon>&nbsp;&nbsp;宠物列表
+        <svg-icon icon-class="product-list"></svg-icon>&nbsp;&nbsp;商品列表
       </el-menu-item>
       <el-menu-item index="2-2">
-        <svg-icon icon-class="product-add"></svg-icon>&nbsp;&nbsp;添加宠物
+        <svg-icon icon-class="product-add"></svg-icon>&nbsp;&nbsp;添加商品
       </el-menu-item>
       <el-menu-item index="2-3">
-        <svg-icon icon-class="product-cate"></svg-icon>&nbsp;&nbsp;宠物分类
+        <svg-icon icon-class="product-cate"></svg-icon>&nbsp;&nbsp;商品分类
       </el-menu-item>
       <el-menu-item index="2-4" disabled>
-        <svg-icon icon-class="form"></svg-icon>&nbsp;&nbsp;编辑宠物
+        <svg-icon icon-class="form"></svg-icon>&nbsp;&nbsp;编辑商品
       </el-menu-item>
     </el-submenu>
     <el-submenu index="3">
