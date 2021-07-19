@@ -147,6 +147,7 @@ export default {
   methods: {
     getList() {
       getOrderList(this.listQuery).then((response) => {
+        console.log(response);
         this.orderList = response.list;
         this.total = response.total;
       });

@@ -229,6 +229,7 @@ export default {
     getList() {
       this.userListLoading = true;
       fetchList(this.userListQuery).then(response => {
+        console.log(response);
         this.userListLoading = false;
         this.userList = response.userList;
         this.total = response.total;

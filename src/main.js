@@ -12,7 +12,7 @@ import VCharts from 'v-charts'
 
 import '@/assets/icons' // icon
 import '@/assets/styles/index.scss'
-import '@/permission' // permission control
+// import '@/permission' // permission control
 
 Vue.use(ElementUI, { locale })
 Vue.use(VCharts)

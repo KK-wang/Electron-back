@@ -184,7 +184,7 @@ export default {
         if (valid) {
           this.loading = true;
           login(this.loginForm.username, this.loginForm.password).then((data) => { // 处理登录
-            if(data === 'success') {
+            if(data !== null) {
               setTimeout(() => {
                 setCookie("isLogin",1,1);
                 this.loading = false;

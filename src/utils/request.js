@@ -8,7 +8,7 @@ const service = axios.create({
     // 解决跨域问题:
     baseURL: "/api",
     timeout: 3000 // 请求超时时间
-})
+});
 
 service.interceptors.response.use(
     response => { // 请求成功的话来这儿
@@ -21,7 +21,7 @@ service.interceptors.response.use(
             })
             return Promise.reject('error')
         } else {
-            return Promise.resolve(response.data);
+            return Promise.resolve(response.data.object);
         }
     },
     error => { // 请求超时来这儿，或者说没有对应的API接口时来这儿
