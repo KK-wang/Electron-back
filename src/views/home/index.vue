@@ -64,7 +64,7 @@
       <el-row :gutter="20">
         <el-col :span="12">
           <div class="out-border cool-border">
-            <div class="layout-title">宠物总览</div>
+            <div class="layout-title">商品总览</div>
             <div style="padding: 40px">
               <el-row>
                 <el-col :span="6" class="color-danger overview-item-value">17</el-col>
@@ -76,7 +76,7 @@
                 <el-col :span="6" class="overview-item-title">已下架</el-col>
                 <el-col :span="6" class="overview-item-title">已上架</el-col>
                 <el-col :span="6" class="overview-item-title">库存紧张</el-col>
-                <el-col :span="6" class="overview-item-title">全部宠物</el-col>
+                <el-col :span="6" class="overview-item-title">全部商品</el-col>
               </el-row>
             </div>
           </div>

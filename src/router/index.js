@@ -31,32 +31,32 @@ const routes = [
         path: 'product',
         name: 'product',
         component: () => import('@/views/product'),
-        meta: {title: '宠物', icon: 'product'},
+        meta: {title: '商品', icon: 'product'},
         redirect: 'list',
         children: [
           {
             path: 'list',
             name: 'list',
             component: () => import('@/views/product/components/list.vue'),
-            meta: {title: '宠物列表', icon: 'list'}
+            meta: {title: '商品列表', icon: 'list'}
           },
           {
             path: 'add',
             name: 'add',
             component: () => import('@/views/product/components/add.vue'),
-            meta: {title: '添加宠物', icon: 'add'}
+            meta: {title: '添加商品', icon: 'add'}
           },
           {
             path: 'category',
             name: 'category',
             component: () => import('@/views/product/components/category.vue'),
-            meta: {title: '宠物分类', icon: 'category'}
+            meta: {title: '商品分类', icon: 'category'}
           },
           {
             path: 'edit',
             name: 'edit',
             component: () => import('@/views/product/components/edit.vue'),
-            meta: {title: '编辑宠物信息', icon: 'edit'}
+            meta: {title: '编辑商品信息', icon: 'edit'}
           }
         ]
       },

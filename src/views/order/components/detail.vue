@@ -77,40 +77,40 @@
       </div>
       <div style="margin-top: 20px">
         <svg-icon icon-class="marker" style="color: #606266"></svg-icon>
-        <span class="font-small">所购宠物信息</span>
-        <span v-if="order.isShip === 0"><el-button size="mini" type="primary" style="float: right;" @click="editItemListInfoDialog">编辑所购宠物信息</el-button></span>
+        <span class="font-small">所购商品信息</span>
+        <span v-if="order.isShip === 0"><el-button size="mini" type="primary" style="float: right;" @click="editItemListInfoDialog">编辑所购商品信息</el-button></span>
       </div>
       <el-table
           ref="orderItemTable"
           :data="order.orderItemList"
           style="width: 100%; margin-top: 20px" border>
-        <el-table-column label="物种分类" width="120" align="center">
+        <el-table-column label="商品类别" width="120" align="center">
           <template slot-scope="scope">
             <svg-icon :icon-class="scope.row.category" class="color-main"></svg-icon>
           </template>
         </el-table-column>
-        <el-table-column label="宠物图片" align="center">
+        <el-table-column label="商品图片" align="center">
           <template slot-scope="scope">
             <img :src="scope.row.pic" style="height: 80px" alt="">
           </template>
         </el-table-column>
-        <el-table-column label="宠物编号" width="100" align="center">
+        <el-table-column label="商品编号" width="100" align="center">
           <template slot-scope="scope">
             {{ scope.row.id }}
           </template>
         </el-table-column>
-        <el-table-column label="宠物名称" align="center">
+        <el-table-column label="商品名称" align="center">
           <template slot-scope="scope">
             {{scope.row.name}}
           </template>
         </el-table-column>
-        <el-table-column label="宠物详情" width="200" align="center">
+        <el-table-column label="商品详情" width="200" align="center">
             <el-table-column label="库存编号" width="100" align="center">
               <template slot-scope="scope">
               {{scope.row.itemInfo.itemId}}
               </template>
             </el-table-column>
-            <el-table-column label="宠物单价" width="100" align="center">
+            <el-table-column label="商品单价" width="100" align="center">
               <template slot-scope="scope">
               {{scope.row.itemInfo.price}}
               </template>
@@ -232,7 +232,7 @@
     </el-dialog>
     <el-dialog
         :visible.sync="editItemListInfoDialogVisible"
-        title="编辑所购宠物信息"
+        title="编辑所购商品信息"
         width="50%"
         destroy-on-close
         center>
@@ -257,7 +257,7 @@
                 </el-select>
               </template>
             </el-table-column>
-            <el-table-column label="宠物编号" align="center">
+            <el-table-column label="商品编号" align="center">
               <template slot-scope="scope">
                 <el-input v-model="scope.row.productId" clearable></el-input>
               </template>
@@ -463,7 +463,7 @@ export default {
     getOrder() {
       getOrder(this.$route.query.id).then(response => {
         this.order = response;
-        console.log(this.order.deliveryWay);
+        console.log(this.order);
         this.order.totalAmount = 0;
         for(let item of this.order.orderItemList) {
           this.order.totalAmount += item.num * item.itemInfo.price;
@@ -538,7 +538,7 @@ export default {
       this.tempReceiverInfo = Object.assign({}, this.order.receiver, {area: ''}); // 会把area也加tempReceiver！
       // 这个就是浅拷贝！
       this.editReceiverInfoDialogVisible = true;
-      /**
+      /*
        * 赋值和浅拷贝的区别：
        * 先看赋值，将一个对象赋值给一个新的对象的时候，赋的其实是该对象在栈中的地址，而不是堆中的数据。也就是一个对象的改变就会改变另外一个对象。
        * 再看浅拷贝，浅拷贝会创建一个对象，再去遍历原始对象，如果原对象的属性值是基础类型，那么就拷贝基础类型，如果是引用类型，则拷贝的是指针。
@@ -631,7 +631,7 @@ export default {
     handleItemListInfoDialogConfirm() {
       this.$refs['editItemListInfoForm'].validate((valid) => {
         if(valid) {
-          this.$confirm('确定要修改所购宠物信息吗?', '提示', { // 给出了全局的一个 MessageBox，
+          this.$confirm('确定要修改所购商品信息吗?', '提示', { // 给出了全局的一个 MessageBox，
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'
@@ -641,7 +641,7 @@ export default {
               setTimeout(() => {
                 this.itemListInfoDialogConfirmButtonLoading = false;
                 this.$message({
-                  message: '所购宠物信息修改成功',
+                  message: '所购商品信息修改成功',
                   type: 'success',
                   duration:1000
                 });

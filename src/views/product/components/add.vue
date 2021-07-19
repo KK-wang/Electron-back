@@ -1,9 +1,9 @@
 <template>
   <div>
     <el-steps :active="active" finish-status="success" align-center class="step">
-      <el-step title="宠物基本信息"></el-step>
-      <el-step title="宠物照片及库存信息"></el-step>
-      <el-step title="确认宠物信息"></el-step>
+      <el-step title="商品基本信息"></el-step>
+      <el-step title="商品照片及库存信息"></el-step>
+      <el-step title="确认商品信息"></el-step>
     </el-steps>
     <el-card class="form-container" :class="{fadeInToLeft: fadeAnimate.formOneInToLeft,
                                              fadeOutToLeft: fadeAnimate.formOneOutToLeft,
@@ -11,7 +11,7 @@
                                              fadeOutToRight: fadeAnimate.formOneOutToRight}" v-if="fadeAnimate.isFormOneExist">
       <div>
         <el-form :model="form" :rules="rules" label-width="120px" style="width: 600px" ref="form-one">
-          <el-form-item label="物种分类：" prop="category">
+          <el-form-item label="商品类别：" prop="category">
             <el-select v-model="form.category" placeholder="请选择" prop="category" clearable>
               <el-option
                   v-for="item in categoryOptions"
@@ -25,10 +25,10 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="宠物编号：" prop="productId">
+          <el-form-item label="商品编号：" prop="productId">
             <el-input v-model="form.productId" clearable></el-input>
           </el-form-item>
-          <el-form-item label="宠物名称：" prop="productName">
+          <el-form-item label="商品名称：" prop="productName">
             <el-input v-model="form.productName" clearable></el-input>
           </el-form-item>
           <el-form-item label="是否上架：">
@@ -40,7 +40,7 @@
                 :inactive-value="0">
             </el-switch>
           </el-form-item>
-          <el-form-item label="宠物介绍：">
+          <el-form-item label="商品介绍：">
             <el-input
                 v-model="form.description"
                 :autoSize="true"
@@ -59,7 +59,7 @@
                                              fadeOutToRight: fadeAnimate.formTwoOutToRight}" v-if="fadeAnimate.isFormTwoExist">
       <div>
         <el-form :model="form" :rules="rules" label-width="120px" style="width: 600px" ref="form-two">
-          <el-form-item label="宠物图片：" class="uploader-label">
+          <el-form-item label="商品图片：" class="uploader-label">
             <el-upload action=""
                        ref="upload"
                        :http-request="customizeUpload"
@@ -72,7 +72,7 @@
               <i v-else class="el-icon-plus uploader-icon"></i>
             </el-upload>
           </el-form-item>
-          <el-form-item label="宠物库存：" prop="stockList">
+          <el-form-item label="商品库存：" prop="stockList">
             <el-table border style="width: 390px" :data="form.stockList">
               <el-table-column
                   label="库存编号"
@@ -132,29 +132,29 @@
                                              fadeOutToRight: fadeAnimate.formThreeOutToRight}" v-if="fadeAnimate.isFormThreeExist">
       <div>
         <el-form :model="form" :rules="rules" label-width="120px" style="width: 600px" ref="form-three">
-          <el-form-item label="物种分类：">
+          <el-form-item label="商品类别：">
             <span style="float: left">
                  <svg-icon :icon-class="form.category" class="color-main"></svg-icon>
             </span>
             <span style="float: left; color: #8492a6; font-size: 15px; font-weight: bold; margin-left: 10px">{{ form.category }}</span>
           </el-form-item>
-          <el-form-item label="宠物编号：">
+          <el-form-item label="商品编号：">
             <span style="color: #8492a6; font-size: 15px; font-weight: bold;">{{ form.productId }}</span>
           </el-form-item>
-          <el-form-item label="宠物名称：">
+          <el-form-item label="商品名称：">
             <span style="color: #8492a6; font-size: 15px; font-weight: bold;">{{ form.productName }}</span>
           </el-form-item>
           <el-form-item label="是否上架：">
             <span style="color: #8492a6; font-size: 15px; font-weight: bold;">{{ form.publishStatus === 1 ?  "是" : "否"}}</span>
           </el-form-item>
-          <el-form-item label="宠物介绍：">
+          <el-form-item label="商品介绍：">
             <span style="color: #8492a6; font-size: 15px; font-weight: bold;">{{ form.description }}</span>
           </el-form-item>
-          <el-form-item label="宠物图片：" class="uploader-label">
+          <el-form-item label="商品图片：" class="uploader-label">
             <img v-if="form.pic" :src="form.pic" alt="" class="uploader-img">
-            <i v-else class="el-icon-info uploader-icon" style="border: 1px dashed #d9d9d9; border-radius: 6px; font-size: 16px">没有上传宠物图片</i>
+            <i v-else class="el-icon-info uploader-icon" style="border: 1px dashed #d9d9d9; border-radius: 6px; font-size: 16px">没有上传商品图片</i>
           </el-form-item>
-          <el-form-item label="宠物库存：">
+          <el-form-item label="商品库存：">
             <el-table border style="width: 390px" :data="form.stockList">
               <el-table-column
                   label="库存编号"
@@ -229,7 +229,7 @@ export default {
     }
     return {
       active: 0,
-      categoryOptions: ['BIRDS', 'CATS', 'DOGS', 'FISH', 'REPTILES'],
+      categoryOptions: ['PHONE', 'COMPUTER', 'WATCH', 'EARPHONE', 'PAD'],
       form: {
         category: "",
         productId: "",
@@ -252,10 +252,10 @@ export default {
       isLoading: false,
       isButtonMove: false,
       rules: {
-        category: [{required: true, message: '请选择宠物种类', trigger: 'change'}],
-        productId: [{required: true, message: '请选择宠物编号', trigger: 'blur'}],
+        category: [{required: true, message: '请选择商品种类', trigger: 'change'}],
+        productId: [{required: true, message: '请选择商品编号', trigger: 'blur'}],
         productName: [
-          {required: true, message: '请输入宠物名称', trigger: 'blur'},
+          {required: true, message: '请输入商品名称', trigger: 'blur'},
           {min: 3, max: 10, message: '长度在 3 到 10 个字符之间', trigger: 'blur'}
         ],
         stockList: [{required: true, validator: stockListValidate, trigger: 'blur'}],
@@ -392,7 +392,7 @@ export default {
 
       if (!isLegalPic) {
         Message({
-          message: '上传的宠物图片只能是 JPG 格式!',
+          message: '上传的商品图片只能是 JPG 格式!',
           type: 'error',
           duration: 1000
         });
@@ -434,7 +434,7 @@ export default {
       this.isLoading = true;
       createProduct(this.form).then(() => {
         Message({
-          message: '宠物添加成功!',
+          message: '商品添加成功!',
           type: 'success',
           duration: 1000
         });

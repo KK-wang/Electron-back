@@ -12,7 +12,6 @@ const service = axios.create({
 
 service.interceptors.response.use(
     response => { // 请求成功的话来这儿
-        console.log(response);
         if (response.status !== 200) {
             Message({
                 message: "Error!",
@@ -21,11 +20,11 @@ service.interceptors.response.use(
             })
             return Promise.reject('error')
         } else {
+            console.log(response.data);
             return Promise.resolve(response.data.object);
         }
     },
     error => { // 请求超时来这儿，或者说没有对应的API接口时来这儿
-        console.log(error);
         Message({
             message: error.message,
             type: 'error',

@@ -1,7 +1,7 @@
 <template>
   <div class="app-container category-list">
     <el-card class="category-card">
-      <div class="category-title">宠物物种分类</div>
+      <div class="category-title">商品类别</div>
       <div class="table-container">
         <el-table ref="productCateTable"
                   style="width: 100%"
@@ -10,21 +10,16 @@
           <el-table-column label="编号" width="60px" align="center">
             <template slot-scope="scope">{{scope.$index + 1}}</template>
           </el-table-column>
-          <el-table-column label="分类名称" align="center">
+          <el-table-column label="类别名称" align="center">
             <template slot-scope="scope">{{scope.row.categoryName}}</template>
           </el-table-column>
-          <el-table-column label="分类图标" align="center">
+          <el-table-column label="类别图标" align="center">
             <template slot-scope="scope"><svg-icon :icon-class="scope.row.categoryName" class="color-main"></svg-icon></template>
           </el-table-column>
-          <el-table-column label="宠物数量" align="center">
+          <el-table-column label="商品数量" align="center">
             <template slot-scope="scope">{{scope.row.productCount}}</template>
           </el-table-column>
-          <el-table-column label="导航栏显示图标" align="center">
-            <template slot-scope="scope">
-              <img :src="scope.row.clientNavIcon" alt="">
-            </template>
-          </el-table-column>
-          <el-table-column label="编辑物种信息" align="center" width="210px">
+          <el-table-column label="编辑类别信息" align="center" width="210px">
             <template slot-scope="scope">
               <el-button type="primary" icon="el-icon-edit" @click="handleCategoryEditDialog(scope.$index, scope.row)" circle></el-button>
             </template>
@@ -37,11 +32,6 @@
 
 <script>
 import {Message} from "element-ui";
-import birdsIcon from '@/assets/images/clientNav/Birds.gif'
-import catsIcon from '@/assets/images/clientNav/Cats.gif'
-import dogsIcon from '@/assets/images/clientNav/Dogs.gif'
-import fishIcon from '@/assets/images/clientNav/Fish.gif'
-import reptilesIcon from '@/assets/images/clientNav/Reptiles.gif'
 // 在 vue cli 中引入图片就这样引用！
 
 export default {
@@ -68,40 +58,35 @@ export default {
       }, 500);
       this.categoryList = [
         {
-          categoryName: "BIRDS",
+          categoryName: "PHONE",
           productCount: "100",
-          clientNavIcon: birdsIcon,
           navStatus: 1
         },
         {
-          categoryName: "CATS",
+          categoryName: "COMPUTER",
           productCount: "100",
-          clientNavIcon: catsIcon,
           navStatus: 1
         },
         {
-          categoryName: "DOGS",
+          categoryName: "WATCH",
           productCount: "100",
-          clientNavIcon: dogsIcon,
           navStatus: 1
         },
         {
-          categoryName: "FISH",
+          categoryName: "EARPHONE",
           productCount: "100",
-          clientNavIcon: fishIcon,
           navStatus: 1
         },
         {
-          categoryName: "REPTILES",
+          categoryName: "PAD",
           productCount: "100",
-          clientNavIcon: reptilesIcon,
           navStatus: 1
         }
       ];
     },
     handleCategoryEditDialog(index, row) {
       Message({
-        message: '尚不支持编辑物种信息!',
+        message: '尚不支持编辑类别信息!',
         type: 'warning',
         duration: 1000
       })
