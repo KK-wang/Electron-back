@@ -4,7 +4,7 @@
       <div>
         <div class="edit-title">{{ titleText }}的信息编辑</div>
         <el-form :model="form" :rules="rules" label-width="120px" style="width: 600px" ref="editForm">
-          <el-form-item label="物种分类：" prop="category">
+          <el-form-item label="商品分类：" prop="category">
             <el-select v-model="form.category" placeholder="请选择" prop="category" clearable>
               <el-option
                   v-for="item in categoryOptions"
@@ -18,10 +18,10 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="宠物编号：" prop="productId">
+          <el-form-item label="商品编号：" prop="productId">
             <el-input v-model="form.productId" clearable></el-input>
           </el-form-item>
-          <el-form-item label="宠物名称：" prop="productName">
+          <el-form-item label="商品名称：" prop="productName">
             <el-input v-model="form.productName" clearable></el-input>
           </el-form-item>
           <el-form-item label="是否上架：">
@@ -33,14 +33,14 @@
                 :inactive-value="0">
             </el-switch>
           </el-form-item>
-          <el-form-item label="宠物介绍：">
+          <el-form-item label="商品介绍：">
             <el-input
                 v-model="form.description"
                 :autoSize="true"
                 type="textarea"
                 placeholder="请输入内容"></el-input>
           </el-form-item>
-          <el-form-item label="宠物图片：" class="uploader-label">
+          <el-form-item label="商品图片：" class="uploader-label">
             <el-upload action="https://jsonplaceholder.typicode.com/posts/"
                        :show-file-list="true" class="uploader"
                        :on-success="handleUploadSuccess"
@@ -53,7 +53,7 @@
               </i>
             </el-upload>
           </el-form-item>
-          <el-form-item label="宠物库存：" prop="stockList">
+          <el-form-item label="商品库存：" prop="stockList">
             <el-table border style="width: 390px" :data="form.stockList">
               <el-table-column
                   label="库存编号"
@@ -71,7 +71,7 @@
                 </template>
               </el-table-column>
               <el-table-column
-                  label="性别"
+                  label="内存"
                   width="70px"
                   align="center">
                 <template slot-scope="scope">

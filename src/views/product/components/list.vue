@@ -20,13 +20,13 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="宠物名称：">
+          <el-form-item label="商品名称：">
             <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="Name" clearable></el-input>
           </el-form-item>
-          <el-form-item label="宠物编号：">
+          <el-form-item label="商品编号：">
             <el-input style="width: 203px" v-model="listQuery.productId" placeholder="ProductId" clearable></el-input>
           </el-form-item>
-          <el-form-item label="物种分类：">
+          <el-form-item label="商品分类：">
             <el-select v-model="listQuery.category" placeholder="Category" clearable>
               <el-option
                   v-for="item in categoryOptions"
@@ -61,15 +61,15 @@
                 v-loading="listLoading"
                 border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="宠物编号" width="100" align="center">
+        <el-table-column label="商品编号" width="100" align="center">
           <template slot-scope="scope"><p>{{scope.row.productId}}</p></template>
           <!--          此处的template是必不可少的，{{ }}里面的scope.row就相当于:data里面的list-->
           <!--          scope.row只能获取当前行-->
         </el-table-column>
-        <el-table-column label="宠物图片" width="120" align="center">
+        <el-table-column label="商品图片" width="120" align="center">
           <template slot-scope="scope"><img style="height: 80px" :src="scope.row.pic" alt=""></template>
         </el-table-column>
-        <el-table-column label="宠物名称及描述" align="center">
+        <el-table-column label="商品名称及描述" align="center">
           <template slot-scope="scope">
             <p>名称：{{scope.row.name}}</p>
             <p>描述：类别为&nbsp<svg-icon :icon-class="scope.row.category" class="color-main"></svg-icon>，{{scope.row.description}}</p>
@@ -100,7 +100,7 @@
           </template>
         </el-table-column>
         <el-table-column label="销量" width="100" align="center">
-          <template slot-scope="scope">{{scope.row.sale}} 只</template>
+          <template slot-scope="scope">{{scope.row.sale}}</template>
         </el-table-column>
 
         <el-table-column label="操作" width="160" align="center">
@@ -256,7 +256,7 @@ export default {
       // 当加载比较慢的时候，会有一个圆圈在旋转
       multipleSelection: [],
       // 批量操作
-      categoryOptions: ['BIRDS', 'CATS', 'DOGS', 'FISH', 'REPTILES']
+      categoryOptions: ['COMPUTER', 'PHONE', 'WATCH', 'EARPHONE', 'PAD']
       // 物种分类，这个就直接写死
     }
   },
@@ -332,7 +332,7 @@ export default {
       } // 防止用户还没有选择操作类型就按下确定按钮
       if(this.multipleSelection==null||this.multipleSelection.length<1){
         this.$message({
-          message: '请选择要操作的宠物',
+          message: '请选择要操作的商品',
           type: 'warning',
           duration: 1000
         });
