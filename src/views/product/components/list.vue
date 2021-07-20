@@ -151,7 +151,7 @@
         title="编辑货品信息"
         :visible.sync="editSkuInfo.dialogVisible"
         width="40%">
-      <span>宠物编号：</span>
+      <span>商品编号：</span>
       <span>{{editSkuInfo.productId}}</span>
       <el-table style="width: 100%;margin-top: 20px"
                 :data="editSkuInfo.stockList"
@@ -172,7 +172,7 @@
           </template>
         </el-table-column>
         <el-table-column
-            label="性别"
+            label="内存"
             width="80"
             align="center">
           <template slot-scope="scope">
